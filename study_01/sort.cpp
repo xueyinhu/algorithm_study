@@ -29,9 +29,27 @@ void insert_sort(int arr[], int len) {
     }
 }
 
+void quick_sort(int left, int right, int arr[]) {
+    if (left >= right) return;
+    int i = left, j = right, base = arr[left], temp;
+    while (i < j) {
+        while (arr[j] >= base && i < j) j--;
+        while (arr[i] <= base && i < j) i++;
+        if (i < j) {
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+    arr[left] = arr[i];
+    arr[i] = base;
+    quick_sort(left, i - 1, arr);
+    quick_sort(i + 1, right, arr);
+}
+
 int main(int argc, char const *argv[]) {
     int arr[] = {2, 3, 1, 4, 7, 6, 5};
-    select_sort(arr, 7);
+    quick_sort(0, 6, arr);
     arr_to_string(arr, 7);
     return 0;
 }
