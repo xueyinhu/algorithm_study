@@ -1,7 +1,7 @@
 #ifndef SELECT_SORT_H
 #define SELECT_SORT_H
 
-#include "swap.h"
+#include "../swap.h"
 
 void select_sort(int arr[], int len) {
     int min_index;
